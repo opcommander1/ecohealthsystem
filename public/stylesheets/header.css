@@ -9,3 +9,22 @@ body {
 .navbar a {
   font-weight: 300;
 }
+
+.n-style {
+  color: white;
+  -webkit-transition: color 0.5s ease-in-out;
+-moz-transition: color 0.5s ease-in-out;
+-ms-transition: color 0.5s ease-in-out;
+-o-transition: color 0.5s ease-in-out;
+transition: color 0.5s ease-in-out;
+}
+
+
+div:hover ul:hover li:hover a:hover {
+  background-color: #b89b9b;
+}
+
+
+.n-style:hover {
+  color: black;
+}

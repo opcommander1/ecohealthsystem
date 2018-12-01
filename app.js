@@ -14,7 +14,11 @@ app.use(methodOverride("_method"));
 app.use(flash());
 
 app.get("/", function(req, res){
-  res.render("landing")
+  res.render("landing");
+});
+
+app.get("/login", function(req, res){
+  res.render("login");
 });
 
 app.listen('8888', function(){
