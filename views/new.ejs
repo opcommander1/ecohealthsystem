@@ -1,0 +1,72 @@
+<% include partials/header %>
+  <div class="container-fluid">
+    <ul class="bg-image-new">
+      <li><li>
+    </ul>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-design-new">
+          <form method="/" action="POST">
+            <div class="title-new">
+              <h1>Enter Appointment</h1>
+            </div>
+
+            <div class="row">
+              <div class="col-md-12">
+                <div class="new-info-one">
+                  <label id="fname">First Name:</label>
+                    <input type="text" name="fname" placeholder="Enter First Name">
+                </div>
+              </div>
+              <div class="col-md-12 new-info-one">
+                <label id="lname">Last Name:</label>
+                  <input type="text" name="lname" placeholder="Enter Last Name">
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-4">
+                <div class="new-info-two">
+                  <label id="phone">Phone:</label>
+                    <input type="text" name="phone" placeholder="Enter Phone Number">
+                </div>
+              </div>
+                <div class="col-md-3 new-info-three">
+                  <label id="date">Set Date:</label>
+                    <input type="date" name="appoint-day">
+                </div>
+                <div class="col-md-5 new-info-four">
+                  <label id="time">Set Time:</label>
+                    <input type="time" name="appoint-time">
+              </div>
+            </div>
+
+
+            <div class="row">
+              <div class="new-info-five">
+                <div class="col-md-12">
+                  <label id="doc-info">Doctor Info:</label>
+                    <input type="text" name="doc-fname" placeholder="Enter Doctor First Name">
+                </div>
+                <div class="col-md-12">
+                  <input type="text" name="doc-lname" placeholder="Enter Doctor Last Name">
+                </div>
+                <div class="col-md-12">
+                  <textarea name="reason" rows="6" cols="50" placeholder="Reason for Appointment"></textarea>
+                </div>
+                <div class="col-md-12">
+                  <button type="button" name="Submit">Submit</button>
+                </div>
+              </div>
+            </div>
+
+
+
+
+
+
+
+          </form>
+        </div>
+      </div>
+    </div>

@@ -1,0 +1,14 @@
+@import "/stylesheets/header.css";
+@import "/stylesheets/login.css";
+@import "/stylesheets/register.css";
+@import "/stylesheets/new.css";
+@import "/stylesheets/show.css";
+
+
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+
+form input:focus, button:focus {
+  outline: none;
+}
