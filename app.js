@@ -5,33 +5,38 @@ var express         = require("express"),
     flash           = require("connect-flash"),
     passport        = require("passport"),
     LocalStrategy   = require("passport-local"),
-    methodOverride  = require("method-override")
+    methodOverride  = require("method-override"),
+    User            = require("./models/user")
 
+//database connectivity
+mongoose.connect("mongodb://localhost/scheduler_v1");
+
+//requiring routes
+var indexRoutes       = require("./routes/index"),
+    appointmentRoutes = require("./routes/appointments")
+
+//initiating app
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
 app.use(methodOverride("_method"));
 app.use(flash());
 
-app.get("/", function(req, res){
-  res.render("landing");
-});
+//Parssport Configuration
+app.use(require("express-session")({
+  secret: "Top secret",
+  resave: false,
+  saveUninitialized: false
+}));
 
-app.get("/login", function(req, res){
-  res.render("login");
-});
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
-app.get("/register", function(req, res){
-  res.render("register");
-});
-
-app.get("/new", function(req, res){
-  res.render("new");
-});
-
-app.get("/show", function(req, res){
-  res.render("show");
-});
+app.use("/", indexRoutes);
+app.use("/appointments", appointmentRoutes);
 
 app.listen('8888', function(){
   console.log("Server has stated");
