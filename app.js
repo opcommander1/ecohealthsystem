@@ -38,6 +38,7 @@ passport.deserializeUser(User.deserializeUser());
 app.use("/", indexRoutes);
 app.use("/appointments", appointmentRoutes);
 
+
 app.listen('8888', function(){
   console.log("Server has stated");
 });

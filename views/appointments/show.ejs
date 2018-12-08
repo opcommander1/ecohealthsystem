@@ -1,4 +1,4 @@
-<% include partials/header %>
+<% include ../partials/header %>
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-12">
@@ -11,7 +11,7 @@
     <div class="row">
       <div class="col-md-12">
         <div class="addNew">
-          <a class="btn btn-primary" href="/">Add New Appointment</a>
+          <a class="btn btn-primary" href="/appointments/new">Add New Appointment</a>
         </div>
       </div>
     </div>
@@ -32,21 +32,23 @@
             <th>Edit Info</th>
             <th>Delete Info</th>
           </tr>
+        <% appointments.forEach(function(appointment){ %>
           <tr>
-            <td>Shereal</td>
-            <td>McNeal</td>
-            <td>8163459078</td>
-            <td>12/23/2018</td>
-            <td>8:00 AM</td>
-            <td>Dr Full Metal</td>
-            <td>Check Up</td>
-            <td>tneal</td>
-            <td>12/01/18</td>
+            <td><%= appointment.fname %></td>
+            <td><%= appointment.lname %></td>
+            <td><%= appointment.phone %></td>
+            <td><%= appointment.appoint_day %></td>
+            <td><%= appointment.appoint_time %></td>
+            <td><%= appointment.doc_fname %> <%= appointment.doc_lname %></td>
+            <td><%= appointment.reason %></td>
+            <td><%= User.username %></td>
+            <td><%= appointment.create_Date %></td>
             <td><a class="btn btn-info" href="/">Edit</a></td>
           <form action"/" method="POST">
             <td><button class="btn btn-danger">Delete</button></td>
           </form>
           </tr>
+          <% }); %>
         </table>
       </div>
     </div>

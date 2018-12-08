@@ -58,7 +58,7 @@
 }
 
 .new-info-four input {
-  margin: 10px 0px 10px 117px;
+  margin: 10px 0px 10px 43px;
   padding: 5px 0px 3px 5px;
 }
 
@@ -78,6 +78,7 @@
 .new-info-five button {
   background-color: #59d28c;
   border-radius: 5px;
+  margin-bottom: 10px;
 }
 
 .new-info-five textarea[name="reason"], button[type="button"]{
