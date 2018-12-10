@@ -6,10 +6,10 @@ var express         = require("express"),
     passport        = require("passport"),
     LocalStrategy   = require("passport-local"),
     methodOverride  = require("method-override"),
-    User            = require("./models/user")
-
-//database connectivity
-mongoose.connect("mongodb://localhost/scheduler_v1");
+    User            = require("./models/user"),
+    mysql           = require("mysql")
+    databaseOptions = require("./config/config.js"),
+    expressValidator  = require('express-validator')
 
 //requiring routes
 var indexRoutes       = require("./routes/index"),
@@ -21,6 +21,7 @@ app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
 app.use(methodOverride("_method"));
 app.use(flash());
+app.use(expressValidator());
 
 //Parssport Configuration
 app.use(require("express-session")({
@@ -34,6 +35,7 @@ app.use(passport.session());
 passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
+
 
 app.use("/", indexRoutes);
 app.use("/appointments", appointmentRoutes);

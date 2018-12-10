@@ -1,19 +1,34 @@
-var express     = require("express");
-var router      = express.Router();
-var passport    = require("passport");
-var Appointment = require("../models/appointment");
+var express     = require("express"),
+    router      = express.Router(),
+    passport    = require("passport"),
+    mysql           = require("mysql"),
+    // Appointment = require("../models/appointment"),
+    databaseOptions = require("../config/config.js")
+
+// database connectivity
+var con = mysql.createConnection(databaseOptions);
+
+
+// con.connect(function(err){
+//   if (err) throw err;
+//   console.log("Connected!");
+//   var sql = "CREATE TABLE test (username VARCHAR(255))";
+//   con.query(sql, function (err, result){
+//     if (err) throw err;
+//     console.log("Table created");
+//   });
+// });
 
 //Index - show all appointments
 router.get("/", function(req, res){
   //Get all appointments from debug
-  Appointment.find({}, function(err, allAppointments){
-    if(err){
-      console.log(err);
-    } else {
-      res.render("appointments/show", {appointments: allAppointments});
-    }
+  var q = "SELECT * FROM appointments";
+  con.query(q, function(error, allAppointments){
+  if(error) throw error;
+  res.render("appointments/show", {appointments: allAppointments});
   });
 });
+
 
 //CREATE - add new appointment to DB
 router.post("/", function(req, res){
@@ -26,24 +41,25 @@ router.post("/", function(req, res){
   var doc_fname = req.body.doc_fname;
   var doc_lname = req.body.doc_lname;
   var reason = req.body.reason;
-  var create_Date = req.body.create_Date;
 
 
-  var newAppointment = {fname: fname, lname: lname, phone: phone,
+
+  var newAppointment = {first_name: fname, last_name: lname, phone: phone,
   appoint_day: appoint_day, appoint_time: appoint_time, doc_fname: doc_fname,
   appoint_time: appoint_time, doc_fname: doc_fname, doc_lname: doc_lname,
-  reason: reason, create_Date: create_Date}
+  reason: reason}
 
-  //Create anew appointment and save to DB
-  Appointment.create(newAppointment, function(err, newlyCreated){
-    if(err){
-      console.log(err);
-    } else {
-      //redirect to Appointment page
-      res.redirect("/appointments");
-    }
+  //Create a new appointment and insert into DB
+  var q = "INSERT INTO appointments (first_name, last_name, phone, appoint_day, appoint_time, doc_fname, reason) VALUES (newAppointment)";
+  con.query(q, function(error, result){
+  if(error) throw error;
+  console.log("1 record inserted");
+  //redirect to Appointment page
+  res.redirect("/appointments");
   });
 });
+
+
 
 //New - show form to create new appointment
 router.get("/new", function(req, res){

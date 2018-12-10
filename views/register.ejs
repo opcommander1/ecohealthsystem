@@ -5,6 +5,12 @@
     </ul>
     <div class="row">
       <div class="col-md-12">
+        <% if (typeof errors != 'undefined'){ %>
+          <% errors.forEach(function(error){ %>
+          <div class="alert alert-danger">
+            <%= errors.msg %>
+          </div>
+        <% })}; %>
         <div class="form-design-signup">
           <form action="/register" method="POST">
             <div class="title">

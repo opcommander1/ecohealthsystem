@@ -34,15 +34,15 @@
           </tr>
         <% appointments.forEach(function(appointment){ %>
           <tr>
-            <td><%= appointment.fname %></td>
-            <td><%= appointment.lname %></td>
+            <td><%= appointment.first_name %></td>
+            <td><%= appointment.last_name %></td>
             <td><%= appointment.phone %></td>
             <td><%= appointment.appoint_day %></td>
             <td><%= appointment.appoint_time %></td>
             <td><%= appointment.doc_fname %> <%= appointment.doc_lname %></td>
             <td><%= appointment.reason %></td>
-            <td><%= User.username %></td>
-            <td><%= appointment.create_Date %></td>
+            <td><%= User.usernam %></td>
+            <td><%= appointment.create_date %></td>
             <td><a class="btn btn-info" href="/">Edit</a></td>
           <form action"/" method="POST">
             <td><button class="btn btn-danger">Delete</button></td>
