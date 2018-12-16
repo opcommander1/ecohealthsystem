@@ -5,6 +5,12 @@
     </ul>
     <div class="row">
       <div class="col-md-12">
+        <% if (typeof errors != 'undefined'){ %>
+          <% errors.forEach(function(error){ %>
+          <div class="alert alert-danger">
+            <%= error.msg %>
+          </div>
+        <% })}; %>
         <div class="form-design-new">
           <form action="/appointments" method="POST">
             <div class="title-new">
@@ -15,13 +21,13 @@
               <div class="col-md-12">
                 <div class="new-info-one">
                   <label id="fname">First Name:</label>
-                    <input type="text" name="fname" placeholder="Enter First Name">
+                    <input type="text" name="fname" placeholder="Enter First Name" value="<%= fname %>">
                 </div>
               </div>
 
               <div class="col-md-12 new-info-one">
                 <label id="lname">Last Name:</label>
-                  <input type="text" name="lname" placeholder="Enter Last Name">
+                  <input type="text" name="lname" placeholder="Enter Last Name" value="<%= lname %>">
               </div>
             </div>
 
@@ -29,16 +35,16 @@
               <div class="col-md-4">
                 <div class="new-info-two">
                   <label id="phone">Phone:</label>
-                    <input type="text" name="phone" placeholder="Enter Phone Number">
+                    <input type="text" name="phone" placeholder="Enter Phone Number" value="<%= phone %>">
                 </div>
               </div>
                 <div class="col-md-3 new-info-three">
                   <label id="time">Time:</label>
-                    <input type="time" name="appoint_time">
+                    <input type="time" name="appoint_time" value="<%= appoint_time %>">
                 </div>
                 <div class="col-md-5 new-info-four">
                     <label id="date">Set Date:</label>
-                      <input type="date" name="appoint_day">
+                      <input type="date" name="appoint_day" value="<%= appoint_day %>">
                 </div>
             </div>
 
@@ -47,13 +53,13 @@
               <div class="new-info-five">
                 <div class="col-md-12">
                   <label id="doc-info">Doctor Info:</label>
-                    <input type="text" name="doc_fname" placeholder="Enter Doctor First Name">
+                    <input type="text" name="doc_fname" placeholder="Enter Doctor First Name" value="<%= doc_fname %>">
                 </div>
                 <div class="col-md-12">
-                  <input type="text" name="doc_lname" placeholder="Enter Doctor Last Name">
+                  <input type="text" name="doc_lname" placeholder="Enter Doctor Last Name" value="<%= doc_lname %>">
                 </div>
                 <div class="col-md-12">
-                  <textarea name="reason" rows="6" cols="50" placeholder="Reason for Appointment"></textarea>
+                  <textarea name="reason" rows="6" cols="50" placeholder="Reason for Appointment"><%= reason %></textarea>
                 </div>
                 <div class="col-md-12">
                   <button type="submit" name="Submit">Submit</button>

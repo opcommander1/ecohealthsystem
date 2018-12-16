@@ -2,7 +2,7 @@
 .bg-image-register li {
   width: 100%;
   height: 100%;
-  position: absolute;
+  position: fixed;
   top: 52px;
   left: 0;
   background-size: cover;

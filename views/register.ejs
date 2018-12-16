@@ -8,7 +8,7 @@
         <% if (typeof errors != 'undefined'){ %>
           <% errors.forEach(function(error){ %>
           <div class="alert alert-danger">
-            <%= errors.msg %>
+            <%= error.msg %>
           </div>
         <% })}; %>
         <div class="form-design-signup">
@@ -19,15 +19,15 @@
                <div class="row">
                  <div class="col-md-6">
                     <div class="signup-info-left">
-                      <input type="text" name="fname" placeholder="First Name">
-                      <input type="text" name="lname" placeholder="Last Name">
-                      <input type="text" name="username" placeholder="username">
+                      <input type="text" name="fname" placeholder="First Name" value="<%= fname %>">
+                      <input type="text" name="lname" placeholder="Last Name" value="<%= lname %>">
+                      <input type="text" name="username" placeholder="username" value="<%= username %>">
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="signup-info-right">
                       <input type="password" name="password" placeholder="Password">
-                      <input type="text" name="title" placeholder="Title">
+                      <input type="text" name="title" placeholder="Title" value="<%= title %>">
                       <input type="submit" value="Sign-Up">
                     </div>
                   </div>

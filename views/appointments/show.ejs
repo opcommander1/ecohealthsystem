@@ -4,6 +4,7 @@
       <div class="col-md-12">
         <div class="title-show">
           <h1>Appointment Scheduler</h1>
+          <h3 class="alert alert-success"><%= info %></h3>
         </div>
       </div>
     </div>
@@ -39,9 +40,9 @@
             <td><%= appointment.phone %></td>
             <td><%= appointment.appoint_day %></td>
             <td><%= appointment.appoint_time %></td>
-            <td><%= appointment.doc_fname %> <%= appointment.doc_lname %></td>
+            <td><%= appointment.doc_full %> <%= appointment.doc_lname %></td>
             <td><%= appointment.reason %></td>
-            <td><%= User.usernam %></td>
+            <td><%= appointment.username %></td>
             <td><%= appointment.create_date %></td>
             <td><a class="btn btn-info" href="/">Edit</a></td>
           <form action"/" method="POST">
