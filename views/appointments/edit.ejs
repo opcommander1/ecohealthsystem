@@ -1,12 +1,18 @@
-<% include partials/header %>
+<% include ../partials/header %>
   <div class="container-fluid">
     <ul class="bg-image-new">
       <li><li>
     </ul>
     <div class="row">
       <div class="col-md-12">
+        <% if (typeof errors != 'undefined'){ %>
+          <% errors.forEach(function(error){ %>
+          <div class="alert alert-danger">
+            <%= error.msg %>
+          </div>
+        <% })}; %>
         <div class="form-design-new">
-          <form action="/" method="POST">
+          <form action="/appointments/<%= appointment.id %>/?_method=PUT" method="POST">
             <div class="title-new">
               <h1>Edit Appointment</h1>
             </div>
@@ -15,12 +21,12 @@
               <div class="col-md-12">
                 <div class="new-info-one">
                   <label id="fname">First Name:</label>
-                    <input type="text" name="fname" value="">
+                    <input type="text" name="fname" value="<%= appointment.first_name %>">
                 </div>
               </div>
               <div class="col-md-12 new-info-one">
                 <label id="lname">Last Name:</label>
-                  <input type="text" name="lname" value="">
+                  <input type="text" name="lname" value="<%= appointment.last_name %>">
               </div>
             </div>
 
@@ -28,16 +34,16 @@
               <div class="col-md-4">
                 <div class="new-info-two">
                   <label id="phone">Phone:</label>
-                    <input type="text" name="phone" value="">
+                    <input type="text" name="phone" value="<%= appointment.phone %>">
                 </div>
               </div>
                 <div class="col-md-3 new-info-three">
                   <label id="date">Set Date:</label>
-                    <input type="date" name="appoint-day" value="">
+                    <input type="date" name="appoint_day" value="<%= appointment.appoint_day %>">
                 </div>
                 <div class="col-md-5 new-info-four">
                   <label id="time">Set Time:</label>
-                    <input type="time" name="appoint-time" value="">
+                    <input type="time" name="appoint_time" value="<%= appointment.appoint_time %>">
               </div>
             </div>
 
@@ -46,16 +52,16 @@
               <div class="new-info-five">
                 <div class="col-md-12">
                   <label id="doc-info">Doctor Info:</label>
-                    <input type="text" name="doc-fname" value="">
+                    <input type="text" name="doc_fname" value="<%= appointment.doc_fname %>">
                 </div>
                 <div class="col-md-12">
-                  <input type="text" name="doc-lname" value="">
+                  <input type="text" name="doc_lname" value="<%= appointment.doc_lname %>">
                 </div>
                 <div class="col-md-12">
-                  <textarea name="reason" rows="6" cols="50"></textarea>
+                  <textarea name="reason" rows="6" cols="50"><%= appointment.reason %></textarea>
                 </div>
                 <div class="col-md-12">
-                  <button type="button" name="Submit">Submit</button>
+                  <button type="submit" name="Submit">Submit</button>
                 </div>
               </div>
             </div>

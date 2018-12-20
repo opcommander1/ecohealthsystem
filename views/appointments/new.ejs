@@ -7,7 +7,7 @@
       <div class="col-md-12">
         <% if (typeof errors != 'undefined'){ %>
           <% errors.forEach(function(error){ %>
-          <div class="alert alert-danger">
+          <div class="alert alert-danger" id="newAlert-size">
             <%= error.msg %>
           </div>
         <% })}; %>
@@ -20,8 +20,13 @@
             <div class="row">
               <div class="col-md-12">
                 <div class="new-info-one">
-                  <label id="fname">First Name:</label>
+
+                  <label id="fname">First Name: </label>
+                  <% if (typeof errors != 'undefined'){ %>
+                  <span><%= errors[0].msg %></span>
+                  <% }; %>
                     <input type="text" name="fname" placeholder="Enter First Name" value="<%= fname %>">
+
                 </div>
               </div>
 
@@ -71,4 +76,5 @@
       </div>
     </div>
   </div>
-  <% include ../partials/footer %>
+</body>
+</html>
