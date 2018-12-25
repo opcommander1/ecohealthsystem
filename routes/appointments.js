@@ -44,18 +44,16 @@ router.post("/", function(req, res){
   var reason = req.body.reason;
 
   //Validates input
-  req.checkBody('fname', "cannot be empty").notEmpty();
-  req.checkBody('lname', "Last Name field cannot be empty").notEmpty();
-  req.checkBody('phone', "Phone field cannot be empty").notEmpty();
-  req.checkBody('phone', "Phone field must be 10 digits").len(10);
-  req.checkBody('phone', "Phone field must be numric").isNumeric();
+  req.checkBody('fname', "First Name cannot be empty").notEmpty();
+  req.checkBody('lname', "Last Name cannot be empty").notEmpty();
+  req.checkBody('phone', "Phone cannot be empty and must be 10 digits").notEmpty()
   req.checkBody('appoint_time', "Time field cannot be empty").notEmpty();
   req.checkBody('appoint_day', "Date field cannot be empty").notEmpty();
   req.checkBody('doc_fname', "Doctor First Name field cannot be empty").notEmpty();
   req.checkBody('doc_lname', "Doctor Last Name field cannot be empty").notEmpty();
   const errors = req.validationErrors();
 
-  if (typeof errors != 'undefined'){
+  if (errors){
     console.log(`errors: ${JSON.stringify(errors)}`);
     res.render('appointments/new',
     {title: 'Appointment Errors',
@@ -78,7 +76,7 @@ router.post("/", function(req, res){
   console.log("1 record inserted");
   req.flash("info", "1 record inserted");
   //redirect to Appointment page
-  res.redirect("/appointments", {title: "Appointments"});
+  res.redirect("/appointments");
       });
     };
   });
@@ -109,8 +107,12 @@ router.get("/new", function(req, res){
 router.get("/:id/edit", isLoggedIn(), function(req, res){
     con.query('SELECT * FROM appointments WHERE id = ?',
     [req.params.id], function(errors, foundAppointment){
-      if(errors) throw errors;
-      res.render("appointments/edit", {appointment: foundAppointment[0]})
+      if(errors || !foundAppointment[0]){
+        req.flash("errors", "No Appointment found");
+        res.redirect("/appointments");
+      } else {
+      res.render("appointments/edit", {appointment: foundAppointment[0]});
+    }
     });
 });
 
@@ -168,6 +170,20 @@ router.put("/:id", isLoggedIn(), function(req, res){
 }
 });
 
+//Delete Record
+router.delete("/:id", isLoggedIn(), function(req, res){
+  con.query('DELETE FROM appointments WHERE id = ?',
+  [req.params.id], function(errors, result){
+    if (errors){
+      req.flash("info", "No record deleted");
+      console.log(errors);
+      res.render("appointments");
+    } else {
+      req.flash("info", "1 record deleted")
+      res.redirect("/appointments");
+    }
+  });
+});
 
 
 module.exports = router;

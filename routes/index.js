@@ -67,8 +67,7 @@ router.post("/register", function(req, res){
     req.checkBody('username', 'Username field cannot be empty.').notEmpty();
     req.checkBody('fname', 'First Name field cannot be empty.').notEmpty();
     req.checkBody('lname', 'Last Name field cannot be empty.').notEmpty();
-    req.checkBody('password', 'Password field must be 8 characters long.').len(8);
-    req.checkBody('password', 'Password field cannot be empty.').notEmpty();
+    req.checkBody('password', 'Password field cannot be empty and must be 8 characters long.').len(8);
     const errors = req.validationErrors();
 
     if (errors){

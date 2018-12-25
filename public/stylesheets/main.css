@@ -9,6 +9,12 @@ body {
   font-family: 'Montserrat', sans-serif;
 }
 
-form input:focus, button:focus {
-  outline: none;
+button:focus {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.form-control:focus {
+  text-align: center;
+  border-color: white;
+  box-shadow: none;
 }

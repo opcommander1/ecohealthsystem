@@ -9,10 +9,15 @@
 </head>
     <body>
     <div id="landing-header">
+      <% if(isAuthenticated){ %>
  		   <h1>Welcome to Appointment Scheduler!</h1>
+       <a href="/appointments" class="btn btn-lg btn-success">All Appointments</a>
+      <% } else { %>
+       <h1>Welcome to Appointment Scheduler!</h1>
        <h1><%= success %></h1>
 		      <a href="/login" class="btn btn-lg btn-success">Login</a>
           <a href="/register" class="btn btn-lg btn-success">Sign-Up</a>
+      <% }; %>
     </div>
 
     <ul class="slideshow">

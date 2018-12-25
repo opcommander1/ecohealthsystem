@@ -49,7 +49,7 @@
             <td><%= appointment.username %></td>
             <td><%= appointment.create_date %></td>
             <td><a class="btn btn-info" href="/appointments/<%= appointment.id %>/edit">Edit</a></td>
-          <form action"/" method="POST">
+          <form action="/appointments/<%= appointment.id %>?_method=DELETE" method="POST">
             <td><button class="btn btn-danger">Delete</button></td>
           </form>
           </tr>
