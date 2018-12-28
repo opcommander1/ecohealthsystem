@@ -2,7 +2,6 @@ var express           = require("express"),
     router            = express.Router(),
     passport          = require("passport"),
     mysql             = require("mysql"),
-    // Appointment = require("../models/appointment"),
     databaseOptions   = require("../config/config.js"),
     isLoggedIn        = require("../middleware"),
     userid            = require("../models/variables.js")
@@ -10,23 +9,13 @@ var express           = require("express"),
 var con = mysql.createConnection(databaseOptions);
 
 
-// con.connect(function(err){
-//   if (err) throw err;
-//   console.log("Connected!");
-//   var sql = "CREATE TABLE test (username VARCHAR(255))";
-//   con.query(sql, function (err, result){
-//     if (err) throw err;
-//     console.log("Table created");
-//   });
-// });
-
 //Index - show all appointments
 router.get("/", isLoggedIn(), function(req, res){
-  //Get all appointments from debug
-  con.query("SELECT appointments.id, appointments.first_name, appointments.last_name, appointments.phone, appoint_day, appointments.appoint_time, CONCAT(appointments.doc_fname,' ', appointments.doc_lname) AS doc_full, appointments.reason, user.username, appointments.create_date FROM appointments JOIN user ON user.id = appointments.user_id WHERE appointments.user_id = ?",
-  [globalUserid], function(error, allAppointments){
-  if(error) throw error;
-  res.render("appointments/show", {appointments: allAppointments});
+    //Get all appointments from debug
+    con.query("SELECT appointments.id, appointments.first_name, appointments.last_name, appointments.phone, appoint_day, appointments.appoint_time, CONCAT(appointments.doc_fname,' ', appointments.doc_lname) AS doc_full, appointments.reason, user.username, appointments.create_date FROM appointments JOIN user ON user.id = appointments.user_id WHERE appointments.user_id = ? Order By appointments.appoint_day",
+    [globalUserid], function(error, allAppointments){
+    if(error) throw error;
+    res.render("appointments/show", {appointments: allAppointments});
   });
 });
 
@@ -54,29 +43,29 @@ router.post("/", function(req, res){
   const errors = req.validationErrors();
 
   if (errors){
-    console.log(`errors: ${JSON.stringify(errors)}`);
-    res.render('appointments/new',
-    {title: 'Appointment Errors',
-    errors: errors,
-    fname: fname,
-    lname: lname,
-    phone: phone,
-    appoint_time: appoint_time,
-    appoint_day: appoint_day,
-    doc_fname: doc_fname,
-    doc_lname: doc_lname,
-    reason: reason
+      console.log(`errors: ${JSON.stringify(errors)}`);
+      res.render('appointments/new',
+      {title: 'Appointment Errors',
+      errors: errors,
+      fname: fname,
+      lname: lname,
+      phone: phone,
+      appoint_time: appoint_time,
+      appoint_day: appoint_day,
+      doc_fname: doc_fname,
+      doc_lname: doc_lname,
+      reason: reason
     });
   } else {
 
   //Create a new appointment and insert into DB
-  con.query('INSERT INTO appointments(first_name, last_name, phone, appoint_day, appoint_time, doc_fname, doc_lname, reason, user_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)',
-  [fname, lname, phone, appoint_day, appoint_time, doc_fname, doc_lname, reason, globalUserid], function(error, results){
-  if(error) throw error;
-  console.log("1 record inserted");
-  req.flash("info", "1 record inserted");
-  //redirect to Appointment page
-  res.redirect("/appointments");
+      con.query('INSERT INTO appointments(first_name, last_name, phone, appoint_day, appoint_time, doc_fname, doc_lname, reason, user_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)',
+      [fname, lname, phone, appoint_day, appoint_time, doc_fname, doc_lname, reason, globalUserid], function(error, results){
+      if(error) throw error;
+      console.log("1 record inserted");
+      req.flash("info", "1 record inserted");
+      //redirect to Appointment page
+      res.redirect("/appointments");
       });
     };
   });
@@ -113,7 +102,7 @@ router.get("/:id/edit", isLoggedIn(), function(req, res){
       } else {
       res.render("appointments/edit", {appointment: foundAppointment[0]});
     }
-    });
+  });
 });
 
 //Update Appointment Record
@@ -129,6 +118,7 @@ router.put("/:id", isLoggedIn(), function(req, res){
   var doc_lname = req.body.doc_lname;
   var reason = req.body.reason;
 
+  //Keep information in field if there validation errors
   entryUpdate = {
     id,
     first_name,

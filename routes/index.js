@@ -1,7 +1,6 @@
 var express           = require("express"),
     router            = express.Router(),
     passport          = require("passport"),
-    User              = require("../models/user"),
     mysql             = require("mysql"),
     databaseOptions   = require("../config/config.js"),
     isLoggedIn        = require("../middleware")
@@ -12,6 +11,7 @@ const saltRounds = 10;
 
 // database connectivity
 var con = mysql.createConnection(databaseOptions);
+
 //root route
 router.get("/", function(req, res){
   console.log(req.user);
@@ -29,7 +29,6 @@ router.post('/login', passport.authenticate(
   'local', {
   successRedirect: "/appointments",
   failureRedirect: "/login"
-
 }));
 
 //Logout logic
@@ -84,7 +83,7 @@ router.post("/register", function(req, res){
     } else {
 
 
-      //hash passowor
+      //hash passoword
       bcrypt.hash(pword, saltRounds, function(err, hash) {
           con.query('INSERT INTO user(first_name, last_name, title, username, pword) VALUES (?, ?, ?, ?, ?)',
           [first_name, last_name, title, username, hash], function(error, results, fields){
@@ -112,38 +111,5 @@ router.post("/register", function(req, res){
   passport.deserializeUser(function(user_id, done){
     done(null, user_id);
   });
-
-//   function authenticationMiddleware() {
-// 	return (req, res, next) => {
-// 		console.log(`req.session.passport.user: ${JSON.stringify(req.session.passport)}`);
-//
-// 	    if (req.isAuthenticated()) return next();
-// 	    res.redirect('/login')
-// 	}
-// }
-
-
-//     User.register(newUser, req.body.password, function(err, user){
-//       if(err){
-//         return res.render("register");
-//       }
-//         passport.authenticate("local")(req, res, function(){
-//         res.redirect("/");
-//       });
-//     });
-// });
-
-
-//Show Login logic
-// router.post("/login", function(req, res){
-//   res.render("appointments", {title: "Appointment"});
-// })
-
-// router.post("/login", passport.authenticate("local",
-// {
-//     successRedirect: "/appointments",
-//     failureRedirect: "/login"
-//   }), function(req, res){
-// });
 
 module.exports = router;

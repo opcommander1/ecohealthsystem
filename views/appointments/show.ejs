@@ -1,60 +1,60 @@
 <% include ../partials/header %>
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="title-show">
-          <h1>Appointment Scheduler</h1>
-          <% if (info.length > 0){ %>
-          <h3 class="alert alert-success" id="showAlert-size"><%= info %></h3>
-          <% }; %>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="title-show">
+            <h1>Appointment Scheduler</h1>
+            <% if (info.length > 0){ %>
+            <h3 class="alert alert-success" id="showAlert-size"><%= info %></h3>
+            <% }; %>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="addNew">
+            <a class="btn btn-primary" href="/appointments/new">Add New Appointment</a>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <table class="table table-hover">
+            <tr>
+              <th>ID</th>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Phone Number</th>
+              <th>Appointment Date</th>
+              <th>Appointment Time</th>
+              <th>Physician Name</th>
+              <th>Reason for Appointment</th>
+              <th>Created By</th>
+              <th>Created Date</th>
+              <th>Edit Info</th>
+              <th>Delete Info</th>
+            </tr>
+          <% appointments.forEach(function(appointment){ %>
+            <tr>
+              <td><%= appointment.id %></td>
+              <td><%= appointment.first_name %></td>
+              <td><%= appointment.last_name %></td>
+              <td><%= appointment.phone %></td>
+              <td><%= appointment.appoint_day %></td>
+              <td><%= appointment.appoint_time %></td>
+              <td><%= appointment.doc_full %> <%= appointment.doc_lname %></td>
+              <td><%= appointment.reason %></td>
+              <td><%= appointment.username %></td>
+              <td><%= appointment.create_date %></td>
+              <td><a class="btn btn-info" href="/appointments/<%= appointment.id %>/edit">Edit</a></td>
+            <form action="/appointments/<%= appointment.id %>?_method=DELETE" method="POST">
+              <td><button class="btn btn-danger">Delete</button></td>
+            </form>
+            </tr>
+            <% }); %>
+          </table>
         </div>
       </div>
     </div>
-
-    <div class="row">
-      <div class="col-md-12">
-        <div class="addNew">
-          <a class="btn btn-primary" href="/appointments/new">Add New Appointment</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-md-12">
-        <table class="table table-hover">
-          <tr>
-            <th>ID</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Phone Number</th>
-            <th>Appointment Date</th>
-            <th>Appointment Time</th>
-            <th>Physician Name</th>
-            <th>Reason for Appointment</th>
-            <th>Created By</th>
-            <th>Created Date</th>
-            <th>Edit Info</th>
-            <th>Delete Info</th>
-          </tr>
-        <% appointments.forEach(function(appointment){ %>
-          <tr>
-            <td><%= appointment.id %></td>
-            <td><%= appointment.first_name %></td>
-            <td><%= appointment.last_name %></td>
-            <td><%= appointment.phone %></td>
-            <td><%= appointment.appoint_day %></td>
-            <td><%= appointment.appoint_time %></td>
-            <td><%= appointment.doc_full %> <%= appointment.doc_lname %></td>
-            <td><%= appointment.reason %></td>
-            <td><%= appointment.username %></td>
-            <td><%= appointment.create_date %></td>
-            <td><a class="btn btn-info" href="/appointments/<%= appointment.id %>/edit">Edit</a></td>
-          <form action="/appointments/<%= appointment.id %>?_method=DELETE" method="POST">
-            <td><button class="btn btn-danger">Delete</button></td>
-          </form>
-          </tr>
-          <% }); %>
-        </table>
-      </div>
-    </div>
-  </div>
+  </body>
+</html>

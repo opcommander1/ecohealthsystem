@@ -46,6 +46,10 @@ form .signup-info-right input {
   border-radius: 5px;
 }
 
+form .signup-info-left input:focus, form .signup-info-right input:focus {
+  outline: none;
+}
+
 form .signup-info-right input[type="submit"]{
   padding-right: 10px;
   background-color: #59d28c;

@@ -14,7 +14,6 @@ button:focus {
 }
 
 .form-control:focus {
-  text-align: center;
   border-color: white;
   box-shadow: none;
 }

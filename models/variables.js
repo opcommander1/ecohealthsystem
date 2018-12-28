@@ -1,5 +1,6 @@
 var user = {}
 
+//kept track of userid signin
 var id = 0;
 
 ids = {

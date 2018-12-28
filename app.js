@@ -3,7 +3,7 @@ var express           = require("express"),
     bodyParser        = require("body-parser"),
     mongoose          = require("mongoose"),
     methodOverride    = require("method-override"),
-    User              = require("./models/user"),
+    // User              = require("./models/user"),
     mysql             = require("mysql"),
     databaseOptions   = require("./config/config.js"),
     expressValidator  = require("express-validator"),
@@ -83,13 +83,13 @@ passport.use(new LocalStrategy(
 app.use(passport.initialize());
 app.use(passport.session());
 // passport.use(new LocalStrategy(User.authenticate()));
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
+// passport.serializeUser(User.serializeUser());
+// passport.deserializeUser(User.deserializeUser());
 app.use(function(req, res, next){
   res.locals.isAuthenticated = req.isAuthenticated();
   res.locals.error = req.flash("error");
   res.locals.success = req.flash("success");
-  res.locals.info = req.flash("info");
+  res.locals.info = req.flash("info")
   next();
 });
 

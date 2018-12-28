@@ -1,79 +1,79 @@
 <% include ../partials/header %>
-  <div class="container-fluid">
-    <ul class="bg-image-new">
-      <li>
-    <div class="row">
-      <div class="col-md-12">
-        <div class="form-design-new">
-          <form class="form-horizontal" action="/appointments/<%= appointment.id %>/?_method=PUT" method="POST">
-            <div class="title-new">
-              <h1>Edit <%= appointment.first_name %></h1>
-              <h4><a href="/appointments">Go Back</a></h4>
-            </div>
-            <div class="form-group">
-              <label for="fname" class="col-sm-2 control-label">First Name:</label>
-              <div class="col-sm-10">
-                <input type="text" name="fname" class="form-control" id="fname" placeholder="Enter First Name" value="<%= appointment.first_name %>">
+    <div class="container-fluid">
+      <ul class="bg-image-new">
+        <li>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-design-new">
+            <form class="form-horizontal" action="/appointments/<%= appointment.id %>/?_method=PUT" method="POST">
+              <div class="title-new">
+                <h1>Edit <%= appointment.first_name %></h1>
+                <h4><a href="/appointments">Go Back</a></h4>
               </div>
-            </div>
-            <div class="form-group">
-              <label for="lname" class="col-sm-2 control-label">Last Name:</label>
-              <div class="col-sm-10">
-                <input type="text" name="lname" class="form-control" id="lname" placeholder="Enter Last Name" value="<%= appointment.last_name %>">
+              <div class="form-group">
+                <label for="fname" class="col-sm-2 control-label">First Name:</label>
+                <div class="col-sm-10">
+                  <input type="text" name="fname" class="form-control" id="fname" placeholder="Enter First Name" value="<%= appointment.first_name %>">
+                </div>
               </div>
-            </div>
-            <div class="form-group">
-              <label for="phone" class="col-sm-2 control-label">Phone:</label>
-              <div class="col-sm-10">
-                <input type="text" name="phone" class="form-control" id="phone" placeholder="Enter Phone Number" value="<%= appointment.phone %>">
+              <div class="form-group">
+                <label for="lname" class="col-sm-2 control-label">Last Name:</label>
+                <div class="col-sm-10">
+                  <input type="text" name="lname" class="form-control" id="lname" placeholder="Enter Last Name" value="<%= appointment.last_name %>">
+                </div>
               </div>
-            </div>
-            <div class="form-group">
-              <label for="time" class="col-sm-2 control-label">Time:</label>
-              <div class="col-sm-10">
-                <input type="time" name="appoint_time" class="form-control" id="time" value="<%= appointment.appoint_time %>">
+              <div class="form-group">
+                <label for="phone" class="col-sm-2 control-label">Phone:</label>
+                <div class="col-sm-10">
+                  <input type="text" name="phone" class="form-control" id="phone" placeholder="Enter Phone Number" value="<%= appointment.phone %>">
+                </div>
               </div>
-            </div>
-            <div class="form-group">
-              <label for="date" class="col-sm-2 control-label">Set Date:</label>
-              <div class="col-sm-10">
-                <input type="date" name="appoint_day" class="form-control" id="date" value="<%= appointment.appoint_day %>">
+              <div class="form-group">
+                <label for="time" class="col-sm-2 control-label">Time:</label>
+                <div class="col-sm-10">
+                  <input type="time" name="appoint_time" class="form-control" id="time" value="<%= appointment.appoint_time %>">
+                </div>
               </div>
-            </div>
-            <hr>
-            <div class="form-group">
-              <label for="doc_fname" class="col-sm-2 control-label">Physician Info:</label>
-              <div class="col-sm-10">
-                <input type="text" name="doc_fname" class="form-control" id="doc_fname" placeholder="Enter Doctor First Name" value="<%= appointment.doc_fname %>">
+              <div class="form-group">
+                <label for="date" class="col-sm-2 control-label">Set Date:</label>
+                <div class="col-sm-10">
+                  <input type="date" name="appoint_day" class="form-control" id="date" value="<%= appointment.appoint_day %>">
+                </div>
               </div>
-            </div>
-            <div class="form-group">
-              <label for="doc_lname" class="col-sm-2 control-label"></label>
-              <div class="col-sm-10">
-                <input type="text" name="doc_lname" class="form-control" id="doc_lname" placeholder="Enter Doctor Last Name" value="<%= appointment.doc_lname %>">
+              <hr>
+              <div class="form-group">
+                <label for="doc_fname" class="col-sm-2 control-label">Physician Info:</label>
+                <div class="col-sm-10">
+                  <input type="text" name="doc_fname" class="form-control" id="doc_fname" placeholder="Enter Doctor First Name" value="<%= appointment.doc_fname %>">
+                </div>
               </div>
-            </div>
-            <div class="form-group">
-              <label for="reason" class="col-sm-2 control-label">Reason:</label>
-              <div class="col-sm-10">
-                <textarea class="form-control" id="reason" name="reason" rows="8" cols="50"><%= appointment.reason %></textarea>
+              <div class="form-group">
+                <label for="doc_lname" class="col-sm-2 control-label"></label>
+                <div class="col-sm-10">
+                  <input type="text" name="doc_lname" class="form-control" id="doc_lname" placeholder="Enter Doctor Last Name" value="<%= appointment.doc_lname %>">
+                </div>
               </div>
-            </div>
-            <div class="form-group">
-              <div class="col-sm-offset-2 col-sm-10">
-                <% if (typeof errors != 'undefined'){ %>
-                  <% errors.forEach(function(error){ %>
-                <span id="helpBlock" class="help-block"><%= error.msg %></span>
-                <% })}; %>
-                <button type="submit" name="Submit">Submit</button>
+              <div class="form-group">
+                <label for="reason" class="col-sm-2 control-label">Reason:</label>
+                <div class="col-sm-10">
+                  <textarea class="form-control" id="reason" name="reason" rows="8" cols="50"><%= appointment.reason %></textarea>
+                </div>
               </div>
-            </div>
-          </form>
+              <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                  <% if (typeof errors != 'undefined'){ %>
+                    <% errors.forEach(function(error){ %>
+                  <span id="helpBlock" class="help-block"><%= error.msg %></span>
+                  <% })}; %>
+                  <button type="submit" name="Submit">Submit</button>
+                </div>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
+          </li>
+        </ul>
     </div>
-  </li>
-</ul>
-</div>
-</body>
+  </body>
 </html>

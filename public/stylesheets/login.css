@@ -37,6 +37,10 @@ form .input-info input{
   border-radius: 5px;
 }
 
+form .input-info input:focus {
+  outline: none;
+}
+
 form .input-info input[type=submit]{
   background-color: #59d28c;
 }
