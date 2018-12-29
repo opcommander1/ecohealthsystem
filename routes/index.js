@@ -6,7 +6,7 @@ var express           = require("express"),
     isLoggedIn        = require("../middleware")
 
 
-const bcrypt = require('bcrypt-nodejs');
+const bcrypt = require('bcrypt');
 const saltRounds = 10;
 
 // database connectivity
