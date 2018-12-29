@@ -95,7 +95,7 @@ app.use(function(req, res, next){
 app.use("/", indexRoutes);
 app.use("/appointments", appointmentRoutes);
 
-var port = process.env.port || 5000;
-app.listen(port, function(){
+const PORT = process.env.PORT
+app.listen(PORT, function(){
   console.log("Server has stated");
 });
