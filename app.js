@@ -102,7 +102,7 @@ app.use(function(req, res, next){
 app.use("/", indexRoutes);
 app.use("/appointments", appointmentRoutes);
 
-// const PORT = process.env.PORT
-app.listen(5000, function(){
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, function(){
   console.log("Server has stated");
 });
