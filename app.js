@@ -12,7 +12,7 @@ var express           = require("express"),
     passport          = require("passport"),
     LocalStrategy     = require("passport-local"),
     MySQLStore        = require("express-mysql-session") (session),
-    bcrypt            = require("bcrypt"),
+    bcrypt            = require("bcrypt-nodejs"),
     userid            = require("./models/variables.js")
 //requiring routes
 var indexRoutes       = require("./routes/index"),
