@@ -17,7 +17,7 @@ var express           = require("express"),
 var indexRoutes       = require("./routes/index"),
     appointmentRoutes = require("./routes/appointments")
 
-//Global variable to store user id
+//Global variable to store user id 
 global.globalUserid = undefined;
 global.globalUsername = undefined;
 
