@@ -1,6 +1,4 @@
 var host = 'mysql.op1commander.com';
-var port = 3306;
-var localAddress = '76.92.183.169';
 var user = 'op1commander';
 var password = 'fleetofficer50';
 var database = 'ecohealth';
@@ -16,8 +14,8 @@ var database = 'ecohealth';
 //database connectivity
 module.exports = {
     host,
-    port,
-    localAddress,
+    // port,
+    // localAddress,
     // socketPath,
     user,
     password,

@@ -29,14 +29,21 @@ app.use(methodOverride("_method"));
 app.use(flash());
 app.use(expressValidator());
 
+// var options = {
+//    host:          'localhost',
+//    port:          3306,
+//    localAddress:  '127.0.0.1',
+//    socketPath:    '/Applications/MAMP/tmp/mysql/mysql.sock',
+//    user:          'root',
+//    password:      'root',
+//    database:      'ecosystem'
+// };
+
 var options = {
-   host:          'localhost',
-   port:          3306,
-   localAddress:  '127.0.0.1',
-   socketPath:    '/Applications/MAMP/tmp/mysql/mysql.sock',
-   user:          'root',
-   password:      'root',
-   database:      'ecosystem'
+   host:          'mysql.op1commander.com',
+   user:          'op1commander',
+   password:      'fleetofficer50',
+   database:      'ecohealth'
 };
 
 var sessionStore = new MySQLStore(options);
