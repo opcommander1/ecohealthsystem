@@ -17,7 +17,7 @@ var express           = require("express"),
 var indexRoutes       = require("./routes/index"),
     appointmentRoutes = require("./routes/appointments")
 
-//Global variable to store user id 
+//Global variable to store user id
 global.globalUserid = undefined;
 global.globalUsername = undefined;
 
@@ -35,7 +35,7 @@ var options = {
    password:      '59797ad0',
    database:      'heroku_839484e69cfdc0c'
 };
-
+//
 // var options = {
 //    host:          'localhost',
 //    port:          3306,
