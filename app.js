@@ -30,14 +30,21 @@ app.use(flash());
 app.use(expressValidator());
 
 var options = {
-   host:          'localhost',
-   port:          3306,
-   localAddress:  '127.0.0.1',
-   socketPath:    '/Applications/MAMP/tmp/mysql/mysql.sock',
-   user:          'root',
-   password:      'root',
-   database:      'ecosystem'
+   host:          'us-cdbr-iron-east-01.cleardb.net',
+   user:          'b0bc0a78d78226',
+   password:      '59797ad0',
+   database:      'heroku_839484e69cfdc0c'
 };
+
+// var options = {
+//    host:          'localhost',
+//    port:          3306,
+//    localAddress:  '127.0.0.1',
+//    socketPath:    '/Applications/MAMP/tmp/mysql/mysql.sock',
+//    user:          'root',
+//    password:      'root',
+//    database:      'ecosystem'
+// };
 
 var sessionStore = new MySQLStore(options);
 
