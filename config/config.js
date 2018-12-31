@@ -1,7 +1,7 @@
-var host = 'us-cdbr-iron-east-01.cleardb.net';
-var user = 'b0bc0a78d78226';
-var password = '59797ad0';
-var database = 'heroku_839484e69cfdc0c';
+var host = 'mysql.op1commander.com';
+var user = 'op1commander';
+var password = 'fleetofficer50';
+var database = 'ecohealth';
 
 // var host = 'localhost';
 // var port = 3306;

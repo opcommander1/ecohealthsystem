@@ -29,12 +29,12 @@ app.use(methodOverride("_method"));
 app.use(flash());
 app.use(expressValidator());
 
-var options = {
-   host:          'us-cdbr-iron-east-01.cleardb.net',
-   user:          'b0bc0a78d78226',
-   password:      '59797ad0',
-   database:      'heroku_839484e69cfdc0c'
-};
+// var options = {
+//    host:          'mysql.op1commander.com',
+//    user:          'op1commander',
+//    password:      'fleetofficer50',
+//    database:      'ecohealth'
+// };
 //
 // var options = {
 //    host:          'localhost',
@@ -46,7 +46,7 @@ var options = {
 //    database:      'ecosystem'
 // };
 
-var sessionStore = new MySQLStore(options);
+var sessionStore = new MySQLStore(databaseOptions);
 
 //Passport Configuration
 app.use(require("express-session")({
@@ -102,7 +102,7 @@ app.use(function(req, res, next){
 app.use("/", indexRoutes);
 app.use("/appointments", appointmentRoutes);
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8888;
 app.listen(PORT, function(){
   console.log("Server has stated");
 });

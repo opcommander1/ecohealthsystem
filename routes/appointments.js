@@ -12,7 +12,7 @@ var con = mysql.createConnection(databaseOptions);
 //Index - show all appointments
 router.get("/", isLoggedIn(), function(req, res){
     //Get all appointments from debug
-    con.query("SELECT appointments.id, appointments.first_name, appointments.last_name, appointments.phone, appoint_day, appointments.appoint_time, CONCAT(appointments.doc_fname,' ', appointments.doc_lname) AS doc_full, appointments.reason, user.username, appointments.create_date FROM appointments JOIN user ON user.id = appointments.user_id WHERE appointments.user_id = ? Order By appointments.appoint_day",
+    con.query("SELECT appointments.id, appointments.first_name, appointments.last_name, appointments.phone, appoint_day, TIME_FORMAT(appointments.appoint_time, '%h:%i %p') AS appoint_time, CONCAT(appointments.doc_fname,' ', appointments.doc_lname) AS doc_full, appointments.reason, user.username, appointments.create_date FROM appointments JOIN user ON user.id = appointments.user_id WHERE appointments.user_id = ? Order By appointments.appoint_day",
     [globalUserid], function(error, allAppointments){
     if(error) throw error;
     res.render("appointments/show", {appointments: allAppointments});
