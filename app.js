@@ -85,7 +85,7 @@ app.use(function(req, res, next){
 app.use("/", indexRoutes);
 app.use("/appointments", appointmentRoutes);
 
-const PORT = process.env.PORT || 8888;
+const PORT = process.env.PORT || 5000;
 app.listen(PORT, function(){
   console.log("Server has stated");
 });
